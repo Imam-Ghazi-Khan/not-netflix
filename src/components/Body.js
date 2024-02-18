@@ -4,17 +4,21 @@ import Browse from './Browse'
 import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 
 const Body = () => {
-
-    const appRouter = createBrowserRouter([
-        {
-            path:"/",
-            element: <Login/>
-        },
-        {
-            path:"/browse",
-            element: <Browse/>
-        }
-    ])
+    
+    const appRouter = createBrowserRouter({
+        basename: "/netflix-gpt",
+        routes: [
+            {
+                path: "/",
+                element: <Login />
+            },
+            {
+                path: "/browse",
+                element: <Browse />
+            }
+        ]
+    });
+    
 
 
     return (
