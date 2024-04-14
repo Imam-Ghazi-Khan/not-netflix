@@ -14,6 +14,9 @@ const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, setErrorMessage] = useState(null);
 
+  const [emailDefault,setEmailDefault] = useState("test@test.com");
+  const [passwordDefault,setPasswordDefault] = useState("12345678");
+
   const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
@@ -83,8 +86,8 @@ const Login = () => {
         <form onSubmit={(e)=>e.preventDefault()} className='absolute w-11/12 md:w-3/12 p-12 bg-black my-36 mx-auto right-0 left-0 text-white bg-opacity-85'>
             <h1 className='font-bold text-3xl py-4'>{isSignInForm? "Sign In":"Sign Up"}</h1>
             {!isSignInForm && <input ref={name} type='text' placeholder='Name' className='p-4 my-4 w-full bg-gray-700 bg-opacity-40'></input>}
-            <input ref={email} type='text' placeholder='Email Address' className='p-4 my-4 w-full bg-gray-700 bg-opacity-40'></input>
-            <input ref={password} type='text' placeholder='Password' className='p-4 my-4 w-full bg-gray-700 bg-opacity-40'></input>
+            <input ref={email} value={emailDefault}   onChange={(e) => setEmailDefault(e.target.value)}  type='text' placeholder='Email Address' className='p-4 my-4 w-full bg-gray-700 bg-opacity-40'></input>
+            <input ref={password} value={passwordDefault}   onChange={(e) => setPasswordDefault(e.target.value)}   type='text' placeholder='Password' className='p-4 my-4 w-full bg-gray-700 bg-opacity-40'></input>
             <p className='text-red-600 font-bold' onClick={toggleSignInForm}>{errorMessage}</p>
             <button className='p-4 my-6 bg-red-700 w-full' onClick={handleSignInSignUpButton}>{isSignInForm? "Sign In":"Sign Up"}</button>
             <p className=' cursor-pointer' onClick={toggleSignInForm}>{isSignInForm? "New to Netflix? Sign Up Now":"Already registered? Sign In Now"}</p>
