@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import { addNowPlayingMovies } from "../utils/moviesSlice";
 import { useEffect } from "react";
 import { API_OPTIONS } from "../utils/constants";
+import now_playing from "../mocks/now_playing.json";
 
 const useNowPlayingMovies = () => {
     const dispatch = useDispatch();
@@ -12,8 +13,14 @@ const useNowPlayingMovies = () => {
     dispatch(addNowPlayingMovies(json.results));
     }
 
+    const getNowPlayingMockMovies = () => {
+        const data = now_playing;
+        dispatch(addNowPlayingMovies(data.results));
+    }
+
     useEffect(()=>{
     getNowPlayingMovies();
+    getNowPlayingMockMovies();
     },[]);
 }
 

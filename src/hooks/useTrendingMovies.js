@@ -2,6 +2,7 @@ import { useDispatch } from "react-redux";
 import { addNowTrendingMovies } from "../utils/moviesSlice";
 import { useEffect } from "react";
 import { API_OPTIONS } from "../utils/constants";
+import trending from "../mocks/trending.json";
 
 const useTrendingMovies = () => {
     const dispatch = useDispatch();
@@ -12,8 +13,14 @@ const useTrendingMovies = () => {
     dispatch(addNowTrendingMovies(json.results));
     }
 
+    const getNowTrendingMockMovies = () => {
+        const data = trending;
+        dispatch(addNowTrendingMovies(data.results));
+    }
+
     useEffect(()=>{
     getNowTrendingMovies();
+    getNowTrendingMockMovies();
     },[]);
 }
 
